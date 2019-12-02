@@ -6,11 +6,18 @@
     <link rel="stylesheet" href="../assets/css/main.css" />
   </head>
   <body>
-    <form>
-      <input type="text" placeholder="Nombre de la serie" class="js-input" />
-      <input type="submit" value="BUSCAR" class="js-button" />
-    </form>
-    <ul class="js-list"></ul>
+    <div class="container">
+      <form class="form">
+        <input type="text" placeholder="Nombre de la serie" class="js-input input__text" />
+        <input type="submit" value="BUSCAR" class="js-button input__button" />
+      </form>
+
+      <div class="list-container">
+        <ul class="js-fav-series-container fav-series"></ul>
+
+        <ul class="js-series-container series"></ul>
+      </div>
+    </div>
     <script src="../assets/js/main.js"></script>
   </body>
 </html>

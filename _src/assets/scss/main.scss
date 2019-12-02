@@ -1,0 +1,48 @@
+html {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  background: #fabada;
+  height: 100%;
+}
+
+.container {
+  box-sizing: border-box;
+  display: flex;
+}
+
+.form {
+  padding: 10px;
+}
+
+.input {
+  &__text {
+    border: solid 2px purple;
+    background: white;
+    border-radius: 10px;
+    height: 20px;
+  }
+
+  &__button {
+    border: solid purple;
+    background: purple;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+.series {
+  list-style: none;
+}
+
+.serie {
+  &__element {
+    background: fuchsia;
+    padding: 10px;
+    margin: 10px;
+  }
+  &__title {
+    color: rgb(3, 3, 82);
+  }
+}

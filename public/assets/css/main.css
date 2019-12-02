@@ -1,2 +1,50 @@
+html {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  background: #fabada;
+  height: 100%;
+}
+
+.container {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.form {
+  padding: 10px;
+}
+
+.input__text {
+  border: solid 2px purple;
+  background: white;
+  border-radius: 10px;
+  height: 20px;
+}
+
+.input__button {
+  border: solid purple;
+  background: purple;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+
+.series {
+  list-style: none;
+}
+
+.serie__element {
+  background: fuchsia;
+  padding: 10px;
+  margin: 10px;
+}
+
+.serie__title {
+  color: #030352;
+}
 
 /*# sourceMappingURL=main.css.map */
