@@ -9,6 +9,7 @@ html {
 .container {
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
 }
 
 .form {
@@ -32,6 +33,10 @@ html {
   }
 }
 
+.list-container {
+  display: flex;
+  flex-direction: row;
+}
 .series {
   list-style: none;
 }
