@@ -17,7 +17,8 @@ function getServerData() {
       series = serverData;
       paintSeries();
       listenSeries();
-      paintFavoritesSeries();
+      //   paintFavoritesSeries();
+      toggleFavorites(event);
     })
     .catch(function(err) {
       console.log("Error al traer los datos del servidor");
@@ -82,11 +83,11 @@ function listenSeries() {
 
 function paintFavoritesSeries() {
   let htmlCode = "";
-
+  htmlCode += `<li><h3>Mis series favoritas:</h3></li>`;
   for (const favoritesSerie of favoritesSeries) {
-    htmlCode += `<li class="js-serie-element serie__element--fav" id="${favoritesSerie.show.id}">`;
+    htmlCode += `<li class="js-serie-element serie__element" id="${favoritesSerie.show.id}">`;
     htmlCode += `<img src="${favoritesSerie.show.image.medium}" class="js-serie-image serie__image"/>`;
-    htmlCode += `<h3 class="js-serie-title serie__title--fav">${favoritesSerie.show.name}</h3>`;
+    htmlCode += `<h3 class="js-serie-title serie__title">${favoritesSerie.show.name}</h3>`;
     htmlCode += `</li>`;
   }
 
