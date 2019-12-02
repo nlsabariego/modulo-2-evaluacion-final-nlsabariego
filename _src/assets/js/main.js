@@ -17,8 +17,7 @@ function getServerData() {
       series = serverData;
       paintSeries();
       listenSeries();
-      //   paintFavoritesSeries();
-      toggleFavorites(event);
+      paintFavoritesSeries();
     })
     .catch(function(err) {
       console.log("Error al traer los datos del servidor");
@@ -31,9 +30,14 @@ getServerData();
 function paintSeries() {
   let htmlCode = "";
   for (let i = 0; i < series.length; i++) {
+    const favoriteIndex = favoritesSeries.findIndex(function(item, index) {
+      return item.id === favoriteIndex;
+    });
+    const isFavorite = favoriteIndex !== -1;
+
     console.log("fav", favoritesSeries, "actual id", i);
 
-    if (true) {
+    if (isFavorite === true) {
       htmlCode += `<li class="js-serie-element serie__element--fav" id="${series[i].show.id}">`;
       htmlCode += `<img src="${series[i].show.image.medium}" class="js-serie-image serie__image"/>`;
       htmlCode += `<h3 class="js-serie-title serie__title--fav">${series[i].show.name}</h3>`;
@@ -60,14 +64,25 @@ function paintSeries() {
 
 function toggleFavorites(event) {
   const clickedId = parseInt(event.currentTarget.id);
-  for (let i = 0; i < series.length; i++) {
-    if (clickedId === series[i].show.id) {
-      favoritesSeries.push(series[i]);
-      paintFavoritesSeries();
+  const clickedIndex = favoritesSeries.findIndex(function(item, index) {
+    return item.id === clickedId;
+  });
+  const isFavorite = clickedIndex !== -1;
+  if (isFavorite === true) {
+    favoritesSeries.splice(clickedIndex, 1);
+    // console.log("es favorito? y lo saco");
+  } else {
+    for (let i = 0; i < series.length; i++) {
+      if (series[i].show.id === clickedId) {
+        favoritesSeries.push(series[i].show);
+        // console.log("No es favorito y lo meto");
+      }
     }
   }
 
   console.log(event.currentTarget.id, favoritesSeries);
+  console.log(clickedIndex);
+  paintFavoritesSeries();
 }
 
 function listenSeries() {
@@ -85,9 +100,9 @@ function paintFavoritesSeries() {
   let htmlCode = "";
   htmlCode += `<li><h3>Mis series favoritas:</h3></li>`;
   for (const favoritesSerie of favoritesSeries) {
-    htmlCode += `<li class="js-serie-element serie__element" id="${favoritesSerie.show.id}">`;
-    htmlCode += `<img src="${favoritesSerie.show.image.medium}" class="js-serie-image serie__image"/>`;
-    htmlCode += `<h3 class="js-serie-title serie__title">${favoritesSerie.show.name}</h3>`;
+    htmlCode += `<li class="js-serie-element serie__element" id="${favoritesSerie.id}">`;
+    htmlCode += `<img src="${favoritesSerie.image.medium}" class="js-serie-image serie__image"/>`;
+    htmlCode += `<h3 class="js-serie-title serie__title">${favoritesSerie.name}</h3>`;
     htmlCode += `</li>`;
   }
 
