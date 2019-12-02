@@ -41,6 +41,10 @@ html {
   list-style: none;
 }
 
+.fav-series {
+  list-style: none;
+}
+
 .serie {
   &__element {
     background: fuchsia;
@@ -49,5 +53,16 @@ html {
   }
   &__title {
     color: rgb(3, 3, 82);
+  }
+}
+
+.serie {
+  &__element--fav {
+    background: rgb(3, 3, 82);
+    padding: 10px;
+    margin: 10px;
+  }
+  &__title--fav {
+    color: fuchsia;
   }
 }

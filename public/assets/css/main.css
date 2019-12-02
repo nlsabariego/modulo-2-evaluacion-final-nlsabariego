@@ -51,6 +51,10 @@ html {
   list-style: none;
 }
 
+.fav-series {
+  list-style: none;
+}
+
 .serie__element {
   background: fuchsia;
   padding: 10px;
@@ -59,6 +63,16 @@ html {
 
 .serie__title {
   color: #030352;
+}
+
+.serie__element--fav {
+  background: #030352;
+  padding: 10px;
+  margin: 10px;
+}
+
+.serie__title--fav {
+  color: fuchsia;
 }
 
 /*# sourceMappingURL=main.css.map */

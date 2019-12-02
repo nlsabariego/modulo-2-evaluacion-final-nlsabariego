@@ -3,6 +3,7 @@
 const searchBtn = document.querySelector(".js-button");
 let seriesInput = document.querySelector(".js-input");
 const seriesList = document.querySelector(".js-series-container");
+const seriesListFav = document.querySelector(".js-fav-series-container");
 
 let series = [];
 let favoritesSeries = [];
@@ -16,6 +17,7 @@ function getServerData() {
       series = serverData;
       paintSeries();
       listenSeries();
+      paintFavoritesSeries();
     })
     .catch(function(err) {
       console.log("Error al traer los datos del servidor");
@@ -27,14 +29,28 @@ getServerData();
 
 function paintSeries() {
   let htmlCode = "";
-  for (const serie of series) {
-    htmlCode += `<li class="js-serie-element serie__element" id="${serie.show.id}">`;
-    htmlCode += `<img src="${serie.show.image.medium}" class="js-serie-image serie__image"/>`;
-    htmlCode += `<h3 class="js-serie-title serie__title">${serie.show.name}</h3>`;
+  for (let i = 0; i < series.length; i++) {
+    console.log("fav", favoritesSeries, "actual id", i);
+
+    if (true) {
+      htmlCode += `<li class="js-serie-element serie__element--fav" id="${series[i].show.id}">`;
+      htmlCode += `<img src="${series[i].show.image.medium}" class="js-serie-image serie__image"/>`;
+      htmlCode += `<h3 class="js-serie-title serie__title--fav">${series[i].show.name}</h3>`;
+    } else {
+      htmlCode += `<li class="js-serie-element serie__element" id="${series[i].show.id}">`;
+      htmlCode += `<img src="${series[i].show.image.medium}" class="js-serie-image serie__image"/>`;
+      htmlCode += `<h3 class="js-serie-title serie__title">${series[i].show.name}</h3>`;
+    }
     htmlCode += `</li>`;
-    console.log(serie.show.name);
-    console.log(serie.show.image.medium);
-    console.log(serie.show.id);
+
+    //   for (const serie of series) {
+    //     htmlCode += `<li class="js-serie-element serie__element" id="${serie.show.id}">`;
+    //     htmlCode += `<img src="${serie.show.image.medium}" class="js-serie-image serie__image"/>`;
+    //     htmlCode += `<h3 class="js-serie-title serie__title">${serie.show.name}</h3>`;
+    //     htmlCode += `</li>`;
+    // console.log(series[i].show.name);
+    // console.log(series[i].show.image.medium);
+    // console.log(series[i].show.id);
   }
   seriesList.innerHTML = htmlCode;
 }
@@ -42,7 +58,15 @@ function paintSeries() {
 ///ESCUCHAR SERIES\\\
 
 function toggleFavorites(event) {
-  console.log(event.currentTarget.id);
+  const clickedId = parseInt(event.currentTarget.id);
+  for (let i = 0; i < series.length; i++) {
+    if (clickedId === series[i].show.id) {
+      favoritesSeries.push(series[i]);
+      paintFavoritesSeries();
+    }
+  }
+
+  console.log(event.currentTarget.id, favoritesSeries);
 }
 
 function listenSeries() {
@@ -52,6 +76,21 @@ function listenSeries() {
 
     // console.log(serieElement);
   }
+}
+
+///PINTAR SERIES FAVORITAS\\\
+
+function paintFavoritesSeries() {
+  let htmlCode = "";
+
+  for (const favoritesSerie of favoritesSeries) {
+    htmlCode += `<li class="js-serie-element serie__element--fav" id="${favoritesSerie.show.id}">`;
+    htmlCode += `<img src="${favoritesSerie.show.image.medium}" class="js-serie-image serie__image"/>`;
+    htmlCode += `<h3 class="js-serie-title serie__title--fav">${favoritesSerie.show.name}</h3>`;
+    htmlCode += `</li>`;
+  }
+
+  seriesListFav.innerHTML = htmlCode;
 }
 
 ///FUNCTION MATHERFUCKER\\\
