@@ -3,19 +3,28 @@
     
     <head>
         <meta charset="UTF-8" />
-        <title>Adalab Web Starter Kit</title>
-        <link rel="icon" href="./favicon.png" />
-        <link rel="stylesheet" href="./assets/css/main.css" />
+        <title>Buscador de películas</title>
+        <link rel="stylesheet" href="../assets/css/main.css"
+        />
     </head>
     
     <body>
-        <div class="page">
-            <header class="page__header">Header</header>
-            <main class="page__main">Main</main> <a class="link__adalab" href="https://adalab.es" target="_blank">Adalab</a>
-
-            <a
-            class="link__github" href="https://github.com" target="_blank">GitHub</a>
+        <div class="container">
+            <form class="form">
+                <input type="text" placeholder="Nombre de la serie" class="js-input input__text"
+                />
+                <input type="submit" value="BUSCAR" class="js-button input__button" />
+            </form>
+            <div class="list-container">
+                <ul class="js-fav-series-container fav-series">
+                    <li>
+                        <h3>Mis series favoritas:</h3>
+                    </li>
+                </ul>
+                <ul class="js-series-container series"></ul>
+            </div>
         </div>
+        <script src="../assets/js/main.js"></script>
     </body>
 
 </html>
