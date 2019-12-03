@@ -83,3 +83,12 @@ html {
 .serie__element--fav .serie__title {
   color: fuchsia;
 }
+
+.delete-button {
+  box-sizing: border-box;
+  border: solid black 2px;
+  background: red;
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  cursor: pointer;
+}

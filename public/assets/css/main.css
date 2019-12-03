@@ -110,4 +110,14 @@ html {
   color: fuchsia;
 }
 
+.delete-button {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: solid black 2px;
+  background: red;
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=main.css.map */

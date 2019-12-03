@@ -58,7 +58,7 @@ function paintSeries() {
 
     if (isFavorite === true) {
       htmlCode += `<li class="js-serie-element serie__element--fav" id="${series[i].show.id}">`;
-    }  else {
+    } else {
       htmlCode += `<li class="js-serie-element serie__element" id="${series[i].show.id}">`;
     }
 
@@ -102,14 +102,26 @@ function toggleFavorites(event) {
   listenSeries();
   paintFavoritesSeries();
   setLocalStorage();
+  listenDelete();
 }
 
+///ESCUCHADOR SERIES\\\
 function listenSeries() {
   const serieElements = document.querySelectorAll(".js-serie-element");
 
   for (const serieElement of serieElements) {
     serieElement.addEventListener("click", toggleFavorites);
   }
+}
+
+///ESCUCHEDOR BOTON\\\
+
+function listenDelete() {
+  const deleteElements = document.querySelectorAll(".js-delete");
+  for (const deleteElement of deleteElements) {
+    deleteElement.addEventListener("click", toggleFavorites);
+  }
+  console.log("me oyo");
 }
 
 ///PINTAR SERIES FAVORITAS\\\
@@ -121,10 +133,11 @@ function paintFavoritesSeries() {
   for (const favoritesSerie of favoritesSeries) {
     htmlCode += `<li class="js-serie-element serie__element" id="${favoritesSerie.id}">`;
     htmlCode += `<img src="${favoritesSerie.image.medium}" class="js-serie-image serie__image"/>`;
-    htmlCode += `<h3 class="js-serie-title serie__title">${favoritesSerie.name}</h3>`;
+    htmlCode += `<h3 class="js-serie-title serie__title">${favoritesSerie.name} <span class="js-delete delete-button" id="${favoritesSerie.id}">x</span></h3>`;
     htmlCode += `</li>`;
   }
   seriesListFav.innerHTML = htmlCode;
+  listenDelete();
 }
 
 ///FUNCTION MATHERFUCKER\\\
