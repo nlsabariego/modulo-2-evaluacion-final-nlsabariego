@@ -20,7 +20,7 @@ function getServerData() {
       paintFavoritesSeries();
     })
     .catch(function(err) {
-      console.log("Error al traer los datos del servidor");
+      console.error("Error al traer los datos del servidor", err);
     });
 }
 getServerData();
@@ -39,23 +39,19 @@ function paintSeries() {
 
     if (isFavorite === true) {
       htmlCode += `<li class="js-serie-element serie__element--fav" id="${series[i].show.id}">`;
-      htmlCode += `<img src="${series[i].show.image.medium}" class="js-serie-image serie__image"/>`;
-      htmlCode += `<h3 class="js-serie-title serie__title--fav">${series[i].show.name}</h3>`;
     } else {
       htmlCode += `<li class="js-serie-element serie__element" id="${series[i].show.id}">`;
-      htmlCode += `<img src="${series[i].show.image.medium}" class="js-serie-image serie__image"/>`;
-      htmlCode += `<h3 class="js-serie-title serie__title">${series[i].show.name}</h3>`;
     }
-    htmlCode += `</li>`;
 
-    //   for (const serie of series) {
-    //     htmlCode += `<li class="js-serie-element serie__element" id="${serie.show.id}">`;
-    //     htmlCode += `<img src="${serie.show.image.medium}" class="js-serie-image serie__image"/>`;
-    //     htmlCode += `<h3 class="js-serie-title serie__title">${serie.show.name}</h3>`;
-    //     htmlCode += `</li>`;
-    // console.log(series[i].show.name);
-    // console.log(series[i].show.image.medium);
-    // console.log(series[i].show.id);
+    if (series[i].show.image !== null) {
+      htmlCode += `<img src="${series[i].show.image.medium}" class="js-serie-image serie__image"/>`;
+    } else {
+      htmlCode += `<img src="https://via.placeholder.com/210x295/ffffff/666666/?
+        text=TV." class="js-serie-image serie__image"/>`;
+    }
+
+    htmlCode += `<h3 class="js-serie-title serie__title">${series[i].show.name}</h3>`;
+    htmlCode += `</li>`;
   }
   seriesList.innerHTML = htmlCode;
 }
@@ -114,6 +110,8 @@ function paintFavoritesSeries() {
 function handleFormSubmit(event) {
   event.preventDefault();
   getServerData();
+  paintSeries();
+
   console.log(seriesInput.value);
 }
 
