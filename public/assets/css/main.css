@@ -49,16 +49,42 @@ html {
 
 .series {
   list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-line-pack: start;
+  align-content: flex-start;
 }
 
 .fav-series {
   list-style: none;
+  background: #030352;
+  color: #fabada;
+  padding: 0px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .serie__element {
   background: fuchsia;
   padding: 10px;
   margin: 10px;
+  max-height: 350px;
+  max-width: 214px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-transform: none;
 }
 
 .serie__title {
@@ -69,6 +95,15 @@ html {
   background: #030352;
   padding: 10px;
   margin: 10px;
+  max-height: 350px;
+  max-width: 214px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .serie__element--fav .serie__title {

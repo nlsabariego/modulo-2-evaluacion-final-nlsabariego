@@ -39,10 +39,19 @@ html {
 }
 .series {
   list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 
 .fav-series {
   list-style: none;
+  background: rgb(3, 3, 82);
+  color: #fabada;
+  padding: 0px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .serie {
@@ -50,6 +59,11 @@ html {
     background: fuchsia;
     padding: 10px;
     margin: 10px;
+    max-height: 350px;
+    max-width: 214px;
+    display: flex;
+    flex-direction: column;
+    text-transform: none;
   }
   &__title {
     color: rgb(3, 3, 82);
@@ -60,6 +74,10 @@ html {
   background: rgb(3, 3, 82);
   padding: 10px;
   margin: 10px;
+  max-height: 350px;
+  max-width: 214px;
+  display: flex;
+  flex-direction: column;
 }
 
 .serie__element--fav .serie__title {

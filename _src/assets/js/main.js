@@ -15,16 +15,16 @@ function setLocalStorage() {
   localStorage.setItem("favoritesSeries", JSON.stringify(favoritesSeries));
 }
 function getLocalStorage() {
-  const localStorageFavoritesSeries = JSON.parse(localStorage.getItem("FavoritesSeries"));
+  const localStorageFavoritesSeries = JSON.parse(localStorage.getItem("favoritesSeries"));
   console.log("comprobando", localStorageFavoritesSeries);
   if (localStorageFavoritesSeries !== null) {
     console.log("tengo datos");
-    FavoritesSeries = localStorageFavoritesSeries;
-    paintFavoritesSeries();
-    listenSeries();
+    favoritesSeries = localStorageFavoritesSeries;
   } else {
     console.log("no tengo datos");
   }
+  paintFavoritesSeries();
+  listenSeries();
 }
 
 function getServerData() {
@@ -131,8 +131,8 @@ function paintFavoritesSeries() {
 
 function handleFormSubmit(event) {
   event.preventDefault();
-  getLocalStorage();
   getServerData();
+  getLocalStorage();
   paintSeries();
   toggleFavorites(event);
   listenSeries();
