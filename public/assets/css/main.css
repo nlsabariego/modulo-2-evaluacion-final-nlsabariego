@@ -71,7 +71,7 @@ html {
   margin: 10px;
 }
 
-.serie__title--fav {
+.serie__element--fav .serie__title {
   color: fuchsia;
 }
 

@@ -8,6 +8,25 @@ const seriesListFav = document.querySelector(".js-fav-series-container");
 let series = [];
 let favoritesSeries = [];
 
+///LOCAL STORAGE\\\
+
+function setLocalStorage() {
+  //guardado en local storage
+  localStorage.setItem("favoritesSeries", JSON.stringify(favoritesSeries));
+}
+function getLocalStorage() {
+  const localStorageFavoritesSeries = JSON.parse(localStorage.getItem("FavoritesSeries"));
+  console.log("comprobando", localStorageFavoritesSeries);
+  if (localStorageFavoritesSeries !== null) {
+    console.log("tengo datos");
+    FavoritesSeries = localStorageFavoritesSeries;
+    paintFavoritesSeries();
+    listenSeries();
+  } else {
+    console.log("no tengo datos");
+  }
+}
+
 function getServerData() {
   fetch(`http://api.tvmaze.com/search/shows?q=${seriesInput.value}`)
     .then(function(response) {
@@ -31,7 +50,7 @@ function paintSeries() {
   let htmlCode = "";
   for (let i = 0; i < series.length; i++) {
     const favoriteIndex = favoritesSeries.findIndex(function(item, index) {
-      return item.id === favoriteIndex;
+      return item.id === series[i].show.id;
     });
     const isFavorite = favoriteIndex !== -1;
 
@@ -39,7 +58,7 @@ function paintSeries() {
 
     if (isFavorite === true) {
       htmlCode += `<li class="js-serie-element serie__element--fav" id="${series[i].show.id}">`;
-    } else {
+    } /* if (isFavorite === -1)*/ else {
       htmlCode += `<li class="js-serie-element serie__element" id="${series[i].show.id}">`;
     }
 
@@ -78,7 +97,11 @@ function toggleFavorites(event) {
 
   console.log(event.currentTarget.id, favoritesSeries);
   console.log(clickedIndex);
+  console.log(isFavorite);
+  paintSeries();
+  listenSeries();
   paintFavoritesSeries();
+  setLocalStorage();
 }
 
 function listenSeries() {
@@ -101,7 +124,6 @@ function paintFavoritesSeries() {
     htmlCode += `<h3 class="js-serie-title serie__title">${favoritesSerie.name}</h3>`;
     htmlCode += `</li>`;
   }
-
   seriesListFav.innerHTML = htmlCode;
 }
 
@@ -109,12 +131,18 @@ function paintFavoritesSeries() {
 
 function handleFormSubmit(event) {
   event.preventDefault();
+  getLocalStorage();
   getServerData();
   paintSeries();
+  toggleFavorites(event);
+  listenSeries();
+  paintFavoritesSeries();
 
-  console.log(seriesInput.value);
+  // console.log(seriesInput.value);
 }
 
 searchBtn.addEventListener("click", handleFormSubmit);
+
+getLocalStorage();
 
 //# sourceMappingURL=main.js.map

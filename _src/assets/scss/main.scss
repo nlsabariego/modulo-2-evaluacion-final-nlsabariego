@@ -56,13 +56,12 @@ html {
   }
 }
 
-.serie {
-  &__element--fav {
-    background: rgb(3, 3, 82);
-    padding: 10px;
-    margin: 10px;
-  }
-  &__title--fav {
-    color: fuchsia;
-  }
+.serie__element--fav {
+  background: rgb(3, 3, 82);
+  padding: 10px;
+  margin: 10px;
+}
+
+.serie__element--fav .serie__title {
+  color: fuchsia;
 }
