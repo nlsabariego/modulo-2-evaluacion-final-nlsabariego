@@ -70,6 +70,7 @@ function paintSeries() {
     }
 
     htmlCode += `<h3 class="js-serie-title serie__title">${series[i].show.name}</h3>`;
+    htmlCode += `<p>${series[i].show.schedule.time}</p>`;
     htmlCode += `</li>`;
   }
   seriesList.innerHTML = htmlCode;
@@ -139,6 +140,17 @@ function paintFavoritesSeries() {
   seriesListFav.innerHTML = htmlCode;
   listenDelete();
 }
+
+const buttonLog = document.querySelector(".js-button-log");
+
+function logNames(event) {
+  event.preventDefault();
+  for (let i = 0; i < series.length; i++) {
+    console.log(series[i].show.name);
+  }
+}
+
+buttonLog.addEventListener("click", logNames);
 
 ///FUNCTION MATHERFUCKER\\\
 
