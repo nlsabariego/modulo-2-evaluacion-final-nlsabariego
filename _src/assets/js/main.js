@@ -132,7 +132,7 @@ function paintFavoritesSeries() {
   htmlCode += `<li><h3>Mis series favoritas:</h3></li>`;
 
   for (const favoritesSerie of favoritesSeries) {
-    htmlCode += `<li class="js-serie-element serie__element" id="${favoritesSerie.id}">`;
+    htmlCode += `<li class=" serie__element" id="${favoritesSerie.id}">`;
     htmlCode += `<img src="${favoritesSerie.image.medium}" class="js-serie-image serie__image"/>`;
     htmlCode += `<h3 class="js-serie-title serie__title">${favoritesSerie.name} <span class="js-delete delete-button" id="${favoritesSerie.id}">x</span></h3>`;
     htmlCode += `</li>`;
