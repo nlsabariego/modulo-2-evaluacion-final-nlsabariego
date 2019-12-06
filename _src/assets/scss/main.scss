@@ -12,6 +12,14 @@ html {
   flex-direction: column;
 }
 
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(82, 1, 82);
+  font-size: 50px;
+  font-family: monospace;
+}
+
 .form {
   padding: 10px;
 }
@@ -22,6 +30,7 @@ html {
     background: white;
     border-radius: 10px;
     height: 20px;
+    font-family: monospace;
   }
 
   &__button {
@@ -30,12 +39,14 @@ html {
     border-radius: 5px;
     color: white;
     font-weight: bold;
+    font-family: monospace;
   }
 }
 
 .list-container {
   display: flex;
   flex-direction: row;
+  font-family: monospace;
 }
 .series {
   list-style: none;
@@ -52,6 +63,7 @@ html {
   padding: 0px;
   text-transform: uppercase;
   text-align: center;
+  font-family: monospace;
   max-width: 140px;
 }
 

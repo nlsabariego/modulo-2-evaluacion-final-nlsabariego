@@ -18,6 +18,14 @@ html {
   flex-direction: column;
 }
 
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  color: #520152;
+  font-size: 50px;
+  font-family: monospace;
+}
+
 .form {
   padding: 10px;
 }
@@ -27,6 +35,7 @@ html {
   background: white;
   border-radius: 10px;
   height: 20px;
+  font-family: monospace;
 }
 
 .input__button {
@@ -35,6 +44,7 @@ html {
   border-radius: 5px;
   color: white;
   font-weight: bold;
+  font-family: monospace;
 }
 
 .list-container {
@@ -45,6 +55,7 @@ html {
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
+  font-family: monospace;
 }
 
 .series {
@@ -69,6 +80,7 @@ html {
   padding: 0px;
   text-transform: uppercase;
   text-align: center;
+  font-family: monospace;
   max-width: 140px;
 }
 

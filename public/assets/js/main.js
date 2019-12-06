@@ -70,7 +70,6 @@ function paintSeries() {
     }
 
     htmlCode += `<h3 class="js-serie-title serie__title">${series[i].show.name}</h3>`;
-    htmlCode += `<p>${series[i].show.schedule.time}</p>`;
     htmlCode += `</li>`;
   }
   seriesList.innerHTML = htmlCode;
